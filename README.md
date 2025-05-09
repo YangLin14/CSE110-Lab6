@@ -1,4 +1,4 @@
-# Lab 7 - Starter
+# Lab 6 - Web Components and localStorage API
 
 **Member: Fong Yu Lin**
 

@@ -9,7 +9,7 @@ function init() {
   let recipes = getRecipesFromStorage();
   // If no recipes in localStorage, fetch from reference/recipes.json
   if (recipes.length === 0) {
-    fetch("../reference/recipes.json")
+    fetch("reference/recipes.json")
       .then((response) => response.json())
       .then((jsonRecipes) => {
         saveRecipesToStorage(jsonRecipes);

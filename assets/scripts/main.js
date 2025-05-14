@@ -7,8 +7,18 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   // Get the recipes from localStorage
   let recipes = getRecipesFromStorage();
-  // Add each recipe to the <main> element
-  addRecipesToDocument(recipes);
+  // If no recipes in localStorage, fetch from reference/recipes.json
+  if (recipes.length === 0) {
+    fetch("reference/recipes.json")
+      .then((response) => response.json())
+      .then((jsonRecipes) => {
+        saveRecipesToStorage(jsonRecipes);
+        addRecipesToDocument(jsonRecipes);
+      });
+  } else {
+    // Add each recipe to the <main> element
+    addRecipesToDocument(recipes);
+  }
   // Add the event listeners to the form elements
   initFormHandler();
 }

@@ -7,9 +7,14 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   // Get the recipes from localStorage
   let recipes = getRecipesFromStorage();
+
   // If no recipes in localStorage, fetch from reference/recipes.json
   if (recipes.length === 0) {
-    fetch("./reference/recipes.json")
+    const recipesJsonUrl = new URL(
+      "reference/recipes.json",
+      window.location.href
+    );
+    fetch(recipesJsonUrl)
       .then((response) => response.json())
       .then((jsonRecipes) => {
         saveRecipesToStorage(jsonRecipes);
